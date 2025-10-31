@@ -1,0 +1,88 @@
+/* src/styles/Search.css */
+
+.searchPanel {
+  padding: 2rem;
+  background-color: #f4f7f6; /* یک خاکستری بسیار روشن */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box; /* برای محاسبه صحیح padding */
+  height: 100%; /* ارتفاع کامل در حالت دسکتاپ */
+}
+
+.searchPanel h2 {
+  font-size: 1.5rem; /* فونت درشت‌تر */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* استایل‌های سفارشی برای تقویم جستجو */
+/* این کلاس‌ها توسط خود کتابخانه اعمال می‌شوند */
+.DatePicker__input {
+  font-size: 1.1rem !important; /* فونت درشت‌تر */
+  padding: 0.75rem 1rem !important;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box; /* برای محاسبه صحیح padding */
+  color: #555;
+}
+
+.DatePicker__input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* بخش نمایش نتیجه */
+.searchResult {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-height: 50px; /* حداقل ارتفاع برای نمایش پیام "تاریخی انتخاب کنید" */
+  font-size: 1.2rem; /* فونت درشت */
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* کلاس‌های داینامیک بر اساس نوع شیفت */
+.searchResult.off {
+  color: #666; /* خاکستری برای آف */
+}
+
+.searchResult.day {
+  color: #007bff; /* آبی برای روز */
+  font-weight: 700;
+}
+
+.searchResult.night {
+  color: #5a0099; /* بنفش تیره برای شب */
+  font-weight: 700;
+}
+
+/* --- بهینه‌سازی برای موبایل --- */
+@media (max-width: 768px) {
+  .searchPanel {
+    padding: 1.5rem 1rem; /* کاهش پدینگ */
+  }
+
+  .searchPanel h2 {
+    font-size: 1.3rem; /* کاهش فونت عنوان */
+  }
+
+  .searchResult {
+    padding: 1rem;
+    font-size: 1.1rem; /* کاهش فونت نتیجه */
+    margin-top: 1rem;
+  }
+
+  .DatePicker__input {
+    font-size: 1rem !important; /* کاهش فونت ورودی تاریخ */
+    padding: 0.6rem 0.8rem !important;
+  }
+}

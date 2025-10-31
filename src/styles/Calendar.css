@@ -1,0 +1,189 @@
+/* src/styles/Calendar.css */
+
+.calendarDisplay {
+  padding: 2rem;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* هدر تقویم: شامل دکمه‌ها و نام ماه */
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendarHeader h2 {
+  font-size: 1.75rem; /* فونت درشت */
+  font-weight: 700;
+  color: #333;
+  margin: 0 1rem;
+}
+
+/* دکمه‌های ناوبری */
+.navButton, .todayButton {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.navButton:hover, .todayButton:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.navButton {
+  font-size: 1.5rem; /* بزرگتر کردن فلش‌ها */
+  padding: 0.5rem 1.2rem;
+}
+
+/* ردیف نام روزهای هفته */
+.calendarWeekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 0.5rem;
+  direction: rtl;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: 600;
+  color: #888;
+  font-size: 0.9rem; /* کمی کوچکتر برای تاکید روی اعداد */
+}
+
+/* گرید اصلی روزها */
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px; /* فاصله مینیمال بین خانه‌ها */
+  flex-grow: 1; /* باعث می‌شود گرید تمام فضای باقیمانده را پر کند */
+  direction: rtl;
+}
+
+.dayCell {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.1rem; /* فونت خوانا */
+  font-weight: 500;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  height: 70px; /* ارتفاع نسبی برای هر سلول */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #444;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+}
+
+/* سلول‌های خالی (روزهای ماه قبل/بعد) */
+.dayCell.empty {
+  background-color: transparent;
+}
+
+/* روز جاری */
+.dayCell.today {
+  border-color: #007bff;
+  font-weight: 700;
+  color: #007bff;
+  background-color: #e6f2ff;
+}
+
+.dayCell span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* استایل شیفت روز */
+.dayCell.day-shift {
+  background-color: #e6f2ff; /* آبی روشن */
+  color: #0056b3;
+}
+.dayCell.day-shift span {
+  background-color: #007bff;
+  color: white;
+}
+
+/* استایل شیفت شب */
+.dayCell.night-shift {
+  background-color: #f3e5ff; /* بنفش روشن */
+  color: #5a0099;
+}
+.dayCell.night-shift span {
+  background-color: #8e44ad;
+  color: white;
+}
+
+/* ترکیب روز جاری با شیفت */
+.dayCell.today.day-shift {
+  border-color: #0056b3;
+}
+.dayCell.today.night-shift {
+  border-color: #5a0099;
+}
+
+/* --- بهینه‌سازی برای موبایل --- */
+@media (max-width: 768px) {
+  .calendarDisplay {
+    padding: 1rem; /* کاهش پدینگ اصلی از 2rem */
+  }
+
+  .calendarHeader {
+    margin-bottom: 1rem;
+    flex-wrap: wrap; /* اجازه شکستن دکمه‌ها به خط بعد در صورت نیاز */
+  }
+
+  .calendarHeader h2 {
+    font-size: 1.5rem; /* کاهش فونت عنوان ماه */
+    margin: 0 0.5rem;
+  }
+
+  .navButton, .todayButton {
+    padding: 0.5rem 0.75rem; /* کاهش پدینگ دکمه‌ها */
+    font-size: 0.9rem;
+  }
+
+  .navButton {
+    font-size: 1.2rem;
+  }
+
+  .todayButton {
+    /* دکمه "امروز" ممکن است در هدر جا نشود، آن را به خط بعد می‌بریم */
+    flex-basis: 100%;
+    order: 3; /* انتقال به پایین هدر */
+    margin-top: 0.5rem;
+  }
+
+  .weekday {
+    font-size: 0.8rem; /* کاهش فونت نام روزهای هفته */
+  }
+
+  .dayCell {
+    height: 70px; /* کاهش ارتفاع سلول‌ها از 70px */
+    padding: 0.2rem; /* کاهش پدینگ داخلی سلول‌ها */
+    font-size: 1rem; /* کاهش فونت عدد روز */
+    border-width: 1px;
+  }
+
+  .dayCell span {
+    font-size: 0.7rem; /* کاهش فونت "شب" و "روز" */
+    margin-top: 3px;
+    padding: 2px 4px;
+  }
+}

@@ -1,0 +1,56 @@
+/* src/styles/App.css */
+
+/* چیدمان اصلی در دسکتاپ (دو ستونه)
+  ما از CSS Grid برای تقسیم‌بندی دقیق صفحه استفاده می‌کنیم.
+*/
+.appContainer {
+  display: grid;
+  /* در دسکتاپ:
+    ستون اول (جستجو) 35% عرض
+    ستون دوم (تقویم) 65% عرض
+  */
+  grid-template-columns: 35% 65%;
+  width: 100%;
+  height: 100vh; /* ارتفاع کامل صفحه */
+  overflow: hidden; /* جلوگیری از اسکرول کل صفحه */
+}
+
+/* بخش جستجو (چپ) و تقویم (راست)
+  باید قابلیت اسکرول داخلی داشته باشند اگر محتوا زیاد شود
+*/
+.appContainer > .searchSection,
+.appContainer > .calendarSection {
+  height: 100vh;
+  overflow-y: auto; /* فقط اسکرول عمودی در صورت نیاز */
+}
+
+/* --- حالت موبایل (واکنش‌گرا) --- */
+@media (max-width: 768px) {
+  .appContainer {
+    /* در موبایل:
+      تبدیل به دو ردیف (زیر هم)
+      ستون تقویم (بالا) و ستون جستجو (پایین)
+    */
+    grid-template-columns: 1fr; /* تک ستونه */
+    grid-template-rows: auto auto; /* ارتفاع اتوماتیک بر اساس محتوا */
+    height: auto; /* ارتفاع کامل صفحه دیگر لازم نیست */
+    overflow: visible; /* اجازه اسکرول طبیعی موبایل */
+  }
+
+  .appContainer > .searchSection,
+  .appContainer > .calendarSection {
+    height: auto; /* ارتفاع اتوماتیک */
+    overflow-y: visible; /* اسکرول لازم نیست */
+  }
+
+  /* جابجایی ترتیب در موبایل:
+    طبق درخواست شما، تقویم (راست) باید بالا
+    و جستجو (چپ) باید پایین قرار گیرد.
+  */
+  .appContainer > .calendarSection {
+    order: 1; /* ردیف اول */
+  }
+  .appContainer > .searchSection {
+    order: 2; /* ردیف دوم */
+  }
+}
